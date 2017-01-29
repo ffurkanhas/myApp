@@ -24,7 +24,7 @@
           <appendAssemblyId>false</appendAssemblyId>
           <archive>
             <manifest>
-              <mainClass>com.has.App</mainClass>
+              <mainClass>com.has.app.App</mainClass>
             </manifest>
           </archive>
         </configuration>
