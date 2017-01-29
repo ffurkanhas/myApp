@@ -30,20 +30,21 @@ public class App
 	}
     public static void main( String[] args )
     {
-        get("/", (req, res) -> "Welcome To myApp");
-		post("/compute", (req, res) -> {
-			String words = req.queryParams("words");
-			java.util.Scanner kyb = new java.util.Scanner(words);
-			java.util.ArrayList<String> inputList = new java.util.ArrayList<String>();
-			while (kyb.hasNext()){
-            	String value = kyb.next().replaceAll("\\s","");
-            	inputList.add(value);
+	port(getHerokuAssignedPort());        
+	get("/", (req, res) -> "Welcome To myApp");
+	post("/compute", (req, res) -> {
+		String words = req.queryParams("words");
+		java.util.Scanner kyb = new java.util.Scanner(words);
+		java.util.ArrayList<String> inputList = new java.util.ArrayList<String>();
+		while (kyb.hasNext()){
+        	    	String value = kyb.next().replaceAll("\\s","");
+        	    	inputList.add(value);
           	}
-			String target = req.queryParams("target");
-			String change = req.queryParams("change");
-			java.util.ArrayList<String> newList = App.changeLetters(inputList,target,change);
-			
-			Map map = new HashMap();
+		String target = req.queryParams("target");
+		String change = req.queryParams("change");
+		java.util.ArrayList<String> newList = App.changeLetters(inputList,target,change);	
+		
+		Map map = new HashMap();
           	map.put("result", newList);
           	return new ModelAndView(map, "compute.mustache");
         	}, new MustacheTemplateEngine());
@@ -57,10 +58,10 @@ public class App
             new MustacheTemplateEngine());
     }
 	static int getHerokuAssignedPort() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
-        }
-        return 4567;
-    }
+		ProcessBuilder processBuilder = new ProcessBuilder();
+		if (processBuilder.environment().get("PORT") != null) {
+		    return Integer.parseInt(processBuilder.environment().get("PORT"));
+		}
+		return 4567;
+	}
 }
