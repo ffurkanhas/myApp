@@ -9,3 +9,4 @@ cagdas evren  | cbgdbs evren
 bil 481       | bil 481
 
 **It does not work for capital letters**<br>
+[![Build Status](https://travis-ci.org/ffurkanhas/myApp.svg?branch=master)](https://travis-ci.org/ffurkanhas/myApp)
