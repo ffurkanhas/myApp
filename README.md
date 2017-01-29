@@ -2,6 +2,7 @@ The first project prototype is uploaded to GitHub.<br>
 myApp is used for change letters in an ArrayList<br>
 For example:<br>
 All "a"s are changed with "b"
+
 OLD           | NEW
 ------------- | -------------
 fatih furkan  | fbtih furkbn
