@@ -28,15 +28,6 @@ public class App
 		}
 		return true;
 	}
-	
-	static int getHerokuAssignedPort() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
-        }
-        return 4567;
-    }
-
     public static void main( String[] args )
     {
         get("/", (req, res) -> "Welcome To myApp");
@@ -58,11 +49,18 @@ public class App
         	}, new MustacheTemplateEngine());
 		
 		get("/compute",
-            (req, res) -> {
+            (rq, rs) -> {
               Map map = new HashMap();
               map.put("result", "not computed yet!");
               return new ModelAndView(map, "compute.mustache");
             },
             new MustacheTemplateEngine());
+    }
+	static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567;
     }
 }
